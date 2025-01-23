@@ -1,7 +1,10 @@
 from fastapi import FastAPI
+from typing import Dict
 
 # Создаем экземпляр приложения FastAPI
 app = FastAPI()
+
+users: Dict[str, Dict[str, str]] = {}
 
 
 # Определение базового маршрута
@@ -21,7 +24,7 @@ async def read_user(user_id: int):
     return {"message": f"Вы вошли как пользователь № {user_id}"}
 
 
-@app.get("/users/{user_name}/ages/{age_id}")
+@app.get("/user")
 async def read_user_age(user_name: str, age_id: int):
     return {
         "message": f"Информация о пользователе. Имя: {user_name}, Возраст: {age_id}"
